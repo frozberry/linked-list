@@ -120,6 +120,19 @@ contains :: proc(node: ^Node, value: int) -> bool {
 	return false
 }
 
+size :: proc(node: ^Node) -> int {
+	head := node
+	len := 1
+	for {
+		if head.next == nil {
+			break
+		}
+		head = head.next
+		len += 1
+	}
+	return len
+}
+
 main :: proc() {
 	one := new(Node)
 	two := new(Node)
@@ -132,7 +145,8 @@ main :: proc() {
 	one.next = two
 	two.next = thr
 
-
 	append(one, 24)
+
 	print(one)
+	fmt.println(size(one))
 }
